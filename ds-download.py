@@ -5,8 +5,9 @@
 # Objectif : télécharger des pièces jointes sur demarches-simplifiees.fr via l'API
 # Le programme télécharge les pièces jointes avec le numéro identifiant au début
 # du nom des pièces jointes.
-# J'ai simplement rédigé ce programme pour l'usage de mon lycée et je n'ai pas
-# forcément l'intention de l'améliorer ou de le maintenir. À vous de le faire.
+# Ce programme n'est pas "propre" mais 'ai simplement rédigé ce programme pour 
+# l'usage de mon lycée et je n'ai pas forcément l'intention de l'améliorer ou
+# de le maintenir. À vous de le faire.
 
 #########################################################
 #        CONFIGURATION DU PROGRAMME                     #
@@ -21,7 +22,7 @@ procedure = "666"                     # laissez les guillemets
 # Token
 # En tant d'admin, passez en mode usager ou instructeur, puis
 # en haut à droite cliquez l'icône représentant un buste, et enfin
-# cliquez sur "voir mon profil". Vous pouvez alors générez votre
+# cliquez sur "voir mon profil". Vous pouvez alors générer votre
 # token. Normalement, à ne modifier qu'une seule fois sauf si vous
 # pensez que votre compte a été compromis.
 token = "zezezezezezzezezezezeze"      # laissez les guillemets
