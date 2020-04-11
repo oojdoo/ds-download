@@ -28,7 +28,6 @@ def generateur_curl(identites):
 # Fonction de recherche des pièces jointes dans le dossier et sauvegarde dans pieces_jointes/
 def sauvegarde_pieces_jointes(dossier):
     i = 1
-    os.system('mkdir pieces_jointes')
     for d in dossier:
         url = d['value']
         if url != None and 'http' in url and 'filename' in url and '&inline' in url:
@@ -59,6 +58,7 @@ os.system('chmod +x mes_dossiers.sh')
 os.system('./mes_dossiers.sh')
 
 # création du dossier pièce jointe et ensuite boucle sur chaque identité (ie chaque dossier)         
+os.system('mkdir pieces_jointes')
 for identite in dossiers_id:
     intitule_dossier = 'tmp/'+ str(identite)
     with open(intitule_dossier) as json_file:
