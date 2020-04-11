@@ -10,25 +10,12 @@
 
 #########################################################
 #        CONFIGURATION DU PROGRAMME                     #
-#        VOUS POUVEZ MODIFIER CE QUI SUIT               #
+#        VOUS DEVEZ MODIFIER CE QUI SUIT                #
+#        LISEZ LE README POUR LES INSTRUCTIONS          #
 #########################################################
-# Pour un nouveau formulaire, il est nécessaire de modifier
-# le numéro de la procédure ce qui se trouve dans l'url
-# lorsque vous modifiez votre formulaire en tant qu'admin.
-# https://www.demarches-simplifiees.fr/admin/procedures/666
-procedure = "666"                     # laissez les guillemets
 
-# Token
-# En tant d'admin, passez en mode usager ou instructeur, puis
-# en haut à droite cliquez l'icône représentant un buste, et enfin
-# cliquez sur "voir mon profil". Vous pouvez alors générez votre
-# token. Normalement, à ne modifier qu'une seule fois sauf si vous
-# pensez que votre compte a été compromis.
-token = "zezezezezezzezezezezeze"      # laissez les guillemets
-
-# mode d'emploi sous linux : placez le programme ds-download.py dans un nouveau 
-# dossier, ouvrez un terminal dans ce dossier, lancez le programme avec la commande
-# suivante    python3 ds-download.py
+procedure = "666"                       # laissez les guillemets
+token = "zezezezezezzezezezezeze"       # laissez les guillemets
 
 #########################################################
 #     VOUS NE DEVEZ PAS MODIFIER CE QUI SUIT            #
@@ -77,7 +64,6 @@ with open('dossiers.json') as fichier:
     dossiers = json.load(fichier)
     dossiers_id = [e['id'] for e in dossiers['dossiers']]
     generateur_curl(dossiers_id)
-
 
 # téléchargerment des dossiers en JSON via le shell pour exécuter les commandes du fichier
 # mes_dossiers.sh
