@@ -1,22 +1,13 @@
 #########################################################
 # Programme sous licence creative commons CC-Zero       #
 #########################################################
-
-# Objectif : télécharger des pièces jointes sur demarches-simplifiees.fr via l'API
-# Le programme télécharge les pièces jointes avec le numéro identifiant au début
-# du nom des pièces jointes.
-# J'ai simplement rédigé ce programme pour l'usage de mon lycée et je n'ai pas
-# forcément l'intention de l'améliorer ou de le maintenir. À vous de le faire.
-
 #########################################################
 #        CONFIGURATION DU PROGRAMME                     #
 #        VOUS DEVEZ MODIFIER CE QUI SUIT                #
 #        LISEZ LE README POUR LES INSTRUCTIONS          #
 #########################################################
-
 procedure = "666"                       # laissez les guillemets
 token = "zezezezezezzezezezezeze"       # laissez les guillemets
-
 #########################################################
 #     VOUS NE DEVEZ PAS MODIFIER CE QUI SUIT            #
 #     SAUF SI VOUS AVEZ DES CONNAISSANCES EN PYTHON!    #
