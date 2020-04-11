@@ -74,7 +74,7 @@ for identite in dossiers_id:
         i = 1
         for d in data["dossier"]["champs"]:
             url = d['value']
-            if url != None and "http" in url and "filename" in url:
+            if url != None and 'http' in url and 'filename' in url and '&inline' in url:
                 response = requests.get(url)
                 nom_piece = unquote(url[209 + len('filename='):url.find('&inline')])
                 nom_fichier = 'pieces_jointes/'+ identite +' piece '+ str(i)+ ' '+ nom_piece 
