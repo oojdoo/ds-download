@@ -1,7 +1,4 @@
 #########################################################
-# Programme sous licence creative commons CC-Zero       #
-#########################################################
-#########################################################
 #        CONFIGURATION DU PROGRAMME                     #
 #        VOUS DEVEZ MODIFIER CE QUI SUIT                #
 #        LISEZ LE README POUR LES INSTRUCTIONS          #
