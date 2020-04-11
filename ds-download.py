@@ -2,11 +2,14 @@
 # Programme sous licence creative commons CC-Zero       #
 #########################################################
 
-# l'encadré qui suit est censé permettre à un individu lambda de bien configurer
-# j'ai simplement rédiger ce programme pour l'usage de mon lycée et je n'ai pas
+# Objectif : télécharger des pièces jointes sur demarches-simplifiees.fr via l'API
+# Le programme télécharge les pièces jointes avec le numéro identifiant au début
+# du nom des pièces jointes.
+# J'ai simplement rédiger ce programme pour l'usage de mon lycée et je n'ai pas
 # forcément l'intention de l'améliorer ou de le maintenir. À vous de le faire.
 
 #########################################################
+#        CONFIGURATION DU PROGRAMME                     #
 #        VOUS POUVEZ MODIFIER CE QUI SUIT               #
 #########################################################
 # Pour un nouveau formulaire, il est nécessaire de modifier
@@ -22,17 +25,6 @@ procedure = "666"                     # laissez les guillemets
 # token. Normalement, à ne modifier qu'une seule fois sauf si vous
 # pensez que votre compte a été compromis.
 token = "zezezezezezzezezezezeze"      # laissez les guillemets
-
-# À présent, vous pouvez modifier le nommage des pièces jointes
-# avec des noms de champs du formulaire.
-# Exemple : un formulaire contient les champs,
-# Nom de l'élève   et   Prénom de l'élève
-# Les pièces jointes seront alors nommées comme suit :
-# "Nom de l'élève" + "Prénom de l'élève" + piece n° + nom du fichier avec son extension
-# Exemple : Dupont Julie piece 1 bulletins.pdf
-# Vous devez compléter ces deux intitulés.
-premier_intitule_nom_piece_jointe = "Nom de l'élève"        # laissez les guillemets
-deuxieme_intitule_nom_piece_jointe = "Prénom de l'élève"    # laissez les guillemets
 
 # mode d'emploi sous linux : placez le programme ds-download.py dans un nouveau 
 # dossier, ouvrez un terminal dans ce dossier, lancez le programme avec la commande
@@ -77,24 +69,15 @@ for identite in dossiers_id:
     intitule_dossier = 'tmp/'+ str(identite)
     with open(intitule_dossier) as json_file:
         data = json.load(json_file)
-
-        # Cette partie définit le début des noms des pièces jointes téléchargées.
-        for a in data["dossier"]["champs"]:
-            if a['type_de_champ']['libelle'] == premier_intitule_nom_piece_jointe:
-                nom_indice = data["dossier"]["champs"].index(a)
-            if a['type_de_champ']['libelle'] == deuxieme_intitule_nom_piece_jointe:
-                prenom_indice = data["dossier"]["champs"].index(a)
-
+        
         # Recherche des pièces jointes dans le dossier et sauvegarde. 
         i = 1
         for d in data["dossier"]["champs"]:
             url = d['value']
             if url != None and "http" in url and "filename" in url:
                 response = requests.get(url)
-                nom = data["dossier"]["champs"][nom_indice]['value']
-                prenom = data["dossier"]["champs"][prenom_indice]['value']
                 nom_piece = unquote(url[209 + len('filename='):url.find('&inline')])
-                nom_fichier = 'pieces_jointes/'+nom+' '+ prenom +' piece '+ str(i)+ ' '+ nom_piece 
+                nom_fichier = 'pieces_jointes/'+ identite +' piece '+ str(i)+ ' '+ nom_piece 
                 with open(nom_fichier, 'wb') as f:
                     f.write(response.content)
                 i = i + 1
