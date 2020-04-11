@@ -77,7 +77,7 @@ for identite in dossiers_id:
             if url != None and 'http' in url and 'filename' in url and '&inline' in url:
                 response = requests.get(url)
                 nom_piece = unquote(url[209 + len('filename='):url.find('&inline')])
-                nom_fichier = 'pieces_jointes/'+ identite +' piece '+ str(i)+ ' '+ nom_piece 
+                nom_fichier = 'pieces_jointes/'+ str(identite) +' piece '+ str(i)+ ' '+ nom_piece 
                 with open(nom_fichier, 'wb') as f:
                     f.write(response.content)
                 i = i + 1
