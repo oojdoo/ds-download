@@ -81,7 +81,7 @@ for identite in dossiers_id:
 
         # Recherche des pièces jointes dans le dossier et sauvegarde. 
         i = 1
-        for d in data["dossier"]["champs"]:   # data["dossier"]["champs"][-6:]
+        for d in data["dossier"]["champs"]:
             url = d['value']
             if url != None and "http" in url and "filename" in url:
                 response = requests.get(url)
