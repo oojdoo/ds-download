@@ -32,3 +32,5 @@ dossier, ouvrez un terminal dans ce dossier, lancez le programme avec la command
 ci-dessous    
 
 python3 ds-download.py
+
+Remarques : pour windows, il me semble que ce programme peut être adapté mais je n'ai pas d'ordinateur sous windows...
