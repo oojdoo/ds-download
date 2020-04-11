@@ -10,7 +10,7 @@
 # Pour un nouveau formulaire, il est nécessaire de modifier
 # le numéro de la procédure ce qui se trouve dans l'url
 # lorsque vous modifiez votre formulaire en tant qu'admin.
-# https://www.demarches-simplifiees.fr/admin/procedures/27827
+# https://www.demarches-simplifiees.fr/admin/procedures/666
 procedure = "666"                     # laissez les guillemets
 
 # Token
