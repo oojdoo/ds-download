@@ -34,6 +34,10 @@ token = "zezezezezezzezezezezeze"      # laissez les guillemets
 premier_intitule_nom_piece_jointe = "Nom de l'élève"        # laissez les guillemets
 deuxieme_intitule_nom_piece_jointe = "Prénom de l'élève"    # laissez les guillemets
 
+# mode d'emploi : placez le programme ds-download.py dans un nouveau dossier,
+# ouvrez un terminal dans ce dossier, lancez le programme avec la commande
+# suivante    python3 ds-download.py
+
 #########################################################
 #     VOUS NE DEVEZ PAS MODIFIER CE QUI SUIT            #
 #     SAUF SI VOUS AVEZ DES CONNAISSANCES EN PYTHON!    #
