@@ -1,5 +1,5 @@
 ## ds-download sous linux
-Télécharger toutes les pièces jointes sur demarches-simplifiees.fr via l'API fourni par Démarches simplifiées. 
+Télécharger toutes les pièces jointes d'une démarche effectuée sur demarches-simplifiees.fr via l'API fourni par Démarches simplifiées. 
 
 
 Programme sous licence creative commons CC-Zero.    
