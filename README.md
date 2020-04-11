@@ -1,10 +1,7 @@
-# ds-download
+## ds-download
 Télécharger toutes les pièces jointes sur demarches-simplifiees.fr via l'API fourni par Démarches simplifiées
+Programme sous licence creative commons CC-Zero       
 
-
-#########################################################
-     Programme sous licence creative commons CC-Zero       
-#########################################################
 
 Objectif : télécharger des pièces jointes sur demarches-simplifiees.fr via l'API
 Le programme télécharge les pièces jointes avec le numéro identifiant au début
