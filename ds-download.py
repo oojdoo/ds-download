@@ -40,18 +40,20 @@ import requests
 import os
 from urllib.parse import unquote
 
-# Générateur de commandes curl pour télécharger les dossiers
+# Générateur de commandes curl pour télécharger les dossiers en JSON dans un dossier tmp/
 def generateur_curl(identites):
     path1 = 'curl https://www.demarches-simplifiees.fr/api/v1/procedures/' + procedure + \
             '/dossiers/'
     path2 = '?token=' + token + ' > '
+    os.system('mkdir tmp')
     for identite in identites:
         with open('mes_dossiers.sh', 'a') as f:
             f.write(path1 + str(identite) + path2 + 'tmp/' + str(identite) + '\n')
 
-# Fonction de recherche des pièces jointes dans le dossier et sauvegarde.
+# Fonction de recherche des pièces jointes dans le dossier et sauvegarde dans pieces_jointes/
 def sauvegarde_pieces_jointes(dossier):
     i = 1
+    os.system('mkdir pieces_jointes')
     for d in dossier:
         url = d['value']
         if url != None and 'http' in url and 'filename' in url and '&inline' in url:
@@ -77,14 +79,12 @@ with open('dossiers.json') as fichier:
     generateur_curl(dossiers_id)
 
 
-# téléchargerment des dossiers via le shell pour exécuter les commandes du fichier
+# téléchargerment des dossiers en JSON via le shell pour exécuter les commandes du fichier
 # mes_dossiers.sh
-os.system('mkdir tmp')
 os.system('chmod +x mes_dossiers.sh')
 os.system('./mes_dossiers.sh')
 
-# création du dossier pièce jointe et ensuite boucle sur chaque identité (ie chaque dossier)
-os.system('mkdir pieces_jointes')           
+# création du dossier pièce jointe et ensuite boucle sur chaque identité (ie chaque dossier)         
 for identite in dossiers_id:
     intitule_dossier = 'tmp/'+ str(identite)
     with open(intitule_dossier) as json_file:
