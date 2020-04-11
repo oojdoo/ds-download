@@ -3,8 +3,8 @@
 #        VOUS DEVEZ MODIFIER CE QUI SUIT                #
 #        LISEZ LE README POUR LES INSTRUCTIONS          #
 #########################################################
-procedure = "666"                       # laissez les guillemets
-token = "zezezezezezzezezezezeze"       # laissez les guillemets
+procedure = "666"
+token = "zezezezezezzezezezezeze"
 #########################################################
 #     VOUS NE DEVEZ PAS MODIFIER CE QUI SUIT            #
 #     SAUF SI VOUS AVEZ DES CONNAISSANCES EN PYTHON!    #
