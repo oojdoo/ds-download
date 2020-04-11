@@ -5,9 +5,9 @@
 # Objectif : télécharger des pièces jointes sur demarches-simplifiees.fr via l'API
 # Le programme télécharge les pièces jointes avec le numéro identifiant au début
 # du nom des pièces jointes.
-# Ce programme n'est pas "propre" mais 'ai simplement rédigé ce programme pour 
-# l'usage de mon lycée et je n'ai pas forcément l'intention de l'améliorer ou
-# de le maintenir. À vous de le faire.
+# Ce programme n'est pas "propre" mais je l'ai simplement rédigé pour l'usage de
+# mon lycée et je n'ai pas forcément l'intention de l'améliorer ou de le maintenir. 
+# À vous de le faire.
 
 #########################################################
 #        CONFIGURATION DU PROGRAMME                     #
