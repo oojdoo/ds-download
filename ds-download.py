@@ -3,6 +3,8 @@
 #########################################################
 
 # l'encadré qui suit est censé permettre à un individu lambda de bien configurer
+# j'ai simplement rédiger ce programme pour l'usage de mon lycée et je n'ai pas
+# forcément l'intention de l'améliorer ou de le maintenir. À vous de le faire.
 
 #########################################################
 #        VOUS POUVEZ MODIFIER CE QUI SUIT               #
@@ -99,4 +101,4 @@ os.system('rmdir tmp')
 
 # un message 
 print("Le téléchargement des pièces jointes semble avoir été réalisé avec succès.")
-print("Vérifiez qu'elles se trouvent bien dans le dossier 'pieces jointes'.")
+print("Vérifiez qu'elles se trouvent bien dans le dossier 'pieces_jointes'.")
