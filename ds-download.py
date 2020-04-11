@@ -42,7 +42,8 @@ from urllib.parse import unquote
 
 # Générateur de commandes curl pour télécharger les dossiers
 def generateur_curl(identites):
-    path1 = 'curl https://www.demarches-simplifiees.fr/api/v1/procedures/' + procedure + '/dossiers/'
+    path1 = 'curl https://www.demarches-simplifiees.fr/api/v1/procedures/' + procedure + \
+            '/dossiers/'
     path2 = '?token=' + token + ' > '
     for identite in identites:
         with open('mes_dossiers.sh', 'a') as f:
@@ -56,13 +57,15 @@ def sauvegarde_pieces_jointes(dossier):
         if url != None and 'http' in url and 'filename' in url and '&inline' in url:
             response = requests.get(url)
             nom_piece = unquote(url[209 + len('filename='):url.find('&inline')])
-            nom_fichier = 'pieces_jointes/'+ str(identite) +' piece '+ str(i)+ ' '+ nom_piece 
+            nom_fichier = 'pieces_jointes/' + str(identite) + ' piece ' + str(i) + ' ' + \
+                          nom_piece 
             with open(nom_fichier, 'wb') as f:
                 f.write(response.content)
             i = i + 1
 
 # téléchargements des méta-données des dossiers via une commande dans le shell
-cmd_dossiers = 'curl https://www.demarches-simplifiees.fr/api/v1/procedures/' + procedure + '/dossiers?token=' + token + ' > dossiers.json'
+cmd_dossiers = 'curl https://www.demarches-simplifiees.fr/api/v1/procedures/' + \
+               procedure + '/dossiers?token=' + token + ' > dossiers.json'
 os.system(cmd_dossiers)
 
 # récupération des id des dossiers et écriture d'un script rassemblant les commandes curl
@@ -74,7 +77,8 @@ with open('dossiers.json') as fichier:
     generateur_curl(dossiers_id)
 
 
-# téléchargerment des dossiers via le shell pour exécuter les commandes du fichier mes_dossiers.sh
+# téléchargerment des dossiers via le shell pour exécuter les commandes du fichier
+# mes_dossiers.sh
 os.system('mkdir tmp')
 os.system('chmod +x mes_dossiers.sh')
 os.system('./mes_dossiers.sh')
