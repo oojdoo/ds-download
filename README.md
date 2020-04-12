@@ -5,7 +5,7 @@ Télécharger toutes les pièces jointes d'une démarche effectuée sur demarche
 Programme sous licence creative commons CC-Zero.    
 
 
-Objectif : télécharger des pièces jointes sur demarches-simplifiees.fr via l'API. Le programme télécharge les pièces jointes avec le numéro identifiant au début du nom des pièces jointes. Ce programme n'est pas "propre" mais je l'ai simplement rédigé pour l'usage de mon lycée et je n'ai pas forcément l'intention de l'améliorer ou de le maintenir. À vous de le faire.
+Objectif : télécharger des pièces jointes sur demarches-simplifiees.fr via l'API. Le programme télécharge les pièces jointes avec le numéro identifiant au début du nom des pièces jointes. Il est aussi possible d'ajouter des préfixes (champs de la démarche) au nom des pièces jointes. Ce programme n'est pas "propre" mais je l'ai simplement rédigé pour l'usage de mon lycée et je n'ai pas forcément l'intention de l'améliorer ou de le maintenir. À vous de le faire.
 
 
 Mode d'emploi et configuration du fichier ds-download.py
