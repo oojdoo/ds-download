@@ -5,7 +5,7 @@
 #########################################################
 procedure = "666"
 token = "zezezezezezzezezezezeze"
-prefixes = ("Nom de l'élève", "Prénom de l'élève")
+prefixes = ("Champ1", "Champ2")
 numero_dossier = False
 numero_dossier_avant_prefixes = False
 #########################################################
