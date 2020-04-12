@@ -5,7 +5,9 @@
 #########################################################
 procedure = "666"
 token = "zezezezezezzezezezezeze"
-prefixes = []
+prefixes = ("Nom de l'élève", "Prénom de l'élève")
+numero_dossier = False
+numero_dossier_avant_prefixes = False
 #########################################################
 #     VOUS NE DEVEZ PAS MODIFIER CE QUI SUIT            #
 #     SAUF SI VOUS AVEZ DES CONNAISSANCES EN PYTHON!    #
@@ -26,16 +28,26 @@ def generateur_curl(identites):
         with open('mes_dossiers.sh', 'a') as f:
             f.write(path1 + str(identite) + path2 + 'tmp/' + str(identite) + '\n')
 
+# création du préfixe à ajouter dans le nom des pièces jointes
+def recuperation_prefixe(champs, identite):
+    L = [champs.index(champ) for champ in champs
+                             for prefixe in prefixes
+                             if champ['type_de_champ']['libelle'] == prefixe]
+    L = [champs[i]['value'] for i in L]
+    if numero_dossier :
+        L = [str(identite)] + L if numero_dossier_avant_prefixes else L + [str(identite)]
+    return ' '.join(L)
+
 # Fonction de recherche des pièces jointes dans le dossier et sauvegarde dans pieces_jointes/
-def sauvegarde_pieces_jointes(dossier):
+def sauvegarde_pieces_jointes(champs, identite):
     i = 1
-    for d in dossier:
+    for d in champs:
         url = d['value']
         if url != None and 'http' in url and 'filename' in url and '&inline' in url:
             response = requests.get(url)
             nom_piece = unquote(url[url.find('filename=') + len('filename='):url.find('&inline')])
-            nom_fichier = 'pieces_jointes/' + str(identite) + ' piece ' + str(i) + ' ' + \
-                          nom_piece 
+            nom_fichier = 'pieces_jointes/' + recuperation_prefixe(champs, identite) + \
+                          ' piece ' + str(i) + ' ' + nom_piece 
             with open(nom_fichier, 'wb') as f:
                 f.write(response.content)
             i = i + 1
@@ -64,7 +76,7 @@ for identite in dossiers_id:
     intitule_dossier = 'tmp/'+ str(identite)
     with open(intitule_dossier) as json_file:
         data = json.load(json_file)
-        sauvegarde_pieces_jointes(data["dossier"]["champs"])
+        sauvegarde_pieces_jointes(data["dossier"]["champs"], identite)        
 
 # on est poli donc on nettoie après
 os.system('rm dossiers.json mes_dossiers.sh tmp/*')
