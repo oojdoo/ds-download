@@ -5,9 +5,8 @@
 #########################################################
 procedure = "666"
 token = "zezezezezezzezezezezeze"
+numero_dossier = True
 prefixes = ("Champ1", "Champ2")
-numero_dossier = False
-numero_dossier_avant_prefixes = False
 #########################################################
 #     VOUS NE DEVEZ PAS MODIFIER CE QUI SUIT            #
 #     SAUF SI VOUS AVEZ DES CONNAISSANCES EN PYTHON!    #
@@ -34,9 +33,7 @@ def recuperation_prefixe(champs, identite):
                              for prefixe in prefixes
                              if champ['type_de_champ']['libelle'] == prefixe]
     L = [champs[i]['value'] for i in L]
-    if numero_dossier :
-        L = [str(identite)] + L if numero_dossier_avant_prefixes else L + [str(identite)]
-    return ' '.join(L)
+    return ' '.join([str(identite)] + L) if numero_dossier else ' '.join(L)
 
 # Fonction de recherche des pièces jointes dans le dossier et sauvegarde dans pieces_jointes/
 def sauvegarde_pieces_jointes(champs, identite):
