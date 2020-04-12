@@ -5,6 +5,7 @@
 #########################################################
 procedure = "666"
 token = "zezezezezezzezezezezeze"
+prefixes = []
 #########################################################
 #     VOUS NE DEVEZ PAS MODIFIER CE QUI SUIT            #
 #     SAUF SI VOUS AVEZ DES CONNAISSANCES EN PYTHON!    #
