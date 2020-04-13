@@ -6,7 +6,7 @@
 procedure = "666"
 token = "zezezezezezzezezezezeze"
 numero_dossier = True
-prefixes = ["Champ1", "Champ2"]
+prefixes = []
 #########################################################
 #     VOUS NE DEVEZ PAS MODIFIER CE QUI SUIT            #
 #     SAUF SI VOUS AVEZ DES CONNAISSANCES EN PYTHON!    #
@@ -29,10 +29,12 @@ def generateur_curl(identites):
 
 # création du préfixe à ajouter dans le nom des pièces jointes
 def recuperation_prefixe(champs, identite):
-    L = [champs.index(champ) for champ in champs
-                             for prefixe in prefixes
-                             if champ['type_de_champ']['libelle'] == prefixe]
-    L = [champs[i]['value'] for i in L]
+    L = []
+    if prefixes != []:
+        L = [champs.index(champ) for champ in champs
+                                 for prefixe in prefixes
+                                 if champ['type_de_champ']['libelle'] == prefixe]
+        L = [champs[i]['value'] for i in L]  
     return ' '.join([str(identite)] + L) if numero_dossier else ' '.join(L)
 
 # Fonction de recherche des pièces jointes dans le dossier et sauvegarde dans pieces_jointes/
