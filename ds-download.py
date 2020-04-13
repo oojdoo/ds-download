@@ -27,14 +27,29 @@ def generateur_curl(identites):
         with open('mes_dossiers.sh', 'a') as f:
             f.write(path1 + str(identite) + path2 + 'tmp/' + str(identite) + '\n')
 
-# création du préfixe à ajouter dans le nom des pièces jointes
-def recuperation_prefixe(champs, identite):
+# création d'une liste des positions des préfixes
+def positions_prefixes(champs):
     L = []
     if prefixes != []:
         L = [champs.index(champ) for champ in champs
                                  for prefixe in prefixes
                                  if champ['type_de_champ']['libelle'] == prefixe]
-        L = [champs[i]['value'] for i in L]  
+    return L
+
+# positions préfixes dans champs sont-ils identiques à liste_positions_prefixes?
+def positions_identiques_prefixes(champs):
+    test = [champs[i]['type_de_champ']['libelle']
+                for i in liste_positions_prefixes]
+    return test == prefixes
+
+# création du préfixe à ajouter dans le nom des pièces jointes
+def recuperation_prefixe(champs, identite):
+    L = []
+    if prefixes != []:
+        if not positions_identiques_prefixes(champs):
+            L = [champs[i]['value'] for i in positions_prefixes(champs)]
+        else:
+            L = [champs[i]['value'] for i in liste_positions_prefixes]
     return ' '.join([str(identite)] + L) if numero_dossier else ' '.join(L)
 
 # Fonction de recherche des pièces jointes dans le dossier et sauvegarde dans pieces_jointes/
@@ -72,11 +87,15 @@ os.system('./mes_dossiers.sh')
 
 # création du dossier pièce jointe et ensuite boucle sur chaque identité (ie chaque dossier)         
 os.system('mkdir pieces_jointes')
+liste_positions_prefixes = []
 for identite in dossiers_id:
     intitule_dossier = 'tmp/'+ str(identite)
     with open(intitule_dossier) as json_file:
         data = json.load(json_file)
-        sauvegarde_pieces_jointes(data["dossier"]["champs"], identite)        
+        champs = data["dossier"]["champs"]
+        if liste_positions_prefixes == []:
+            liste_positions_prefixes = positions_prefixes(champs)
+        sauvegarde_pieces_jointes(champs, identite)        
 
 # on est poli donc on nettoie après
 os.system('rm dossiers.json mes_dossiers.sh tmp/*')
