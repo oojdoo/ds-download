@@ -42,11 +42,9 @@ def sauvegarde_pieces_jointes(champs, identite):
         url = d['value']
         if url != None and 'http' in url and 'filename' in url:
             response = requests.get(url)
-            url_end = url.find('&inline')
-            url_end = None if url_end == -1 else url_end
-            nom_piece = unquote(url[url.find('filename=') + len('filename='):url_end])
+            nom_piece = unquote(url[url.find('filename=') + len('filename='):])
             nom_fichier = 'pieces_jointes/' + recuperation_prefixe(champs, identite) + \
-                          ' piece ' + str(i) + ' ' + nom_piece 
+                          ' piece ' + str(i) + ' ' + nom_piece.replace('&inline', '')
             with open(nom_fichier, 'wb') as f:
                 f.write(response.content)
             print(nom_fichier)
