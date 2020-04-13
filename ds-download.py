@@ -40,13 +40,16 @@ def sauvegarde_pieces_jointes(champs, identite):
     i = 1
     for d in champs:
         url = d['value']
-        if url != None and 'http' in url and 'filename' in url and '&inline' in url:
+        if url != None and 'http' in url and 'filename' in url:
             response = requests.get(url)
-            nom_piece = unquote(url[url.find('filename=') + len('filename='):url.find('&inline')])
+            url_end = url.find('&inline')
+            url_end = None if url_end == -1 else url_end
+            nom_piece = unquote(url[url.find('filename=') + len('filename='):url_end])
             nom_fichier = 'pieces_jointes/' + recuperation_prefixe(champs, identite) + \
                           ' piece ' + str(i) + ' ' + nom_piece 
             with open(nom_fichier, 'wb') as f:
                 f.write(response.content)
+            print(nom_fichier)
             i = i + 1
 
 # téléchargements des méta-données des dossiers via une commande dans le shell
@@ -81,4 +84,3 @@ os.system('rmdir tmp')
 
 # un message 
 print("Le téléchargement des pièces jointes semble avoir été réalisé avec succès.")
-print("Vérifiez qu'elles se trouvent bien dans le dossier 'pieces_jointes'.")
