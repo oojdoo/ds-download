@@ -6,7 +6,7 @@
 procedure = "666"
 token = "zezezezezezzezezezezeze"
 numero_dossier = True
-prefixes = ("Champ1", "Champ2")
+prefixes = ["Champ1", "Champ2"]
 #########################################################
 #     VOUS NE DEVEZ PAS MODIFIER CE QUI SUIT            #
 #     SAUF SI VOUS AVEZ DES CONNAISSANCES EN PYTHON!    #
@@ -47,7 +47,7 @@ def sauvegarde_pieces_jointes(champs, identite):
                           ' piece ' + str(i) + ' ' + nom_piece.replace('&inline', '')
             with open(nom_fichier, 'wb') as f:
                 f.write(response.content)
-            print(nom_fichier)
+            print(nom_fichier[15:])
             i = i + 1
 
 # téléchargements des méta-données des dossiers via une commande dans le shell

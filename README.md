@@ -27,7 +27,7 @@ token = "zezezezezezzezezezezeze"
 Numéro de dossier. Dans la variable booléenne numero_dossier, vous décidez si le numéro de dossier doit apparaître dans le nom de la pièce jointe (True) ou pas (False).
 
 
-Préfixes. Dans la variable prefixes, vous pouvez ajouter des champs de la démarche que vous souhaitez utiliser pour nommer les pièces jointes téléchargées. Par exemple, prefixe = ("Nom", "Prénom") aura pour effet d'ajouter le nom et le prénom de l'usager au début du nom de la pièce jointe et après le numéro de dossier s'il est activé. prefixe = () n'affichera pas de valeurs de champs dans les noms des pièces jointes; dans ce cas il faut mettre numero_dossier à True.
+Préfixes. Dans la variable prefixes, vous pouvez ajouter des champs de la démarche que vous souhaitez utiliser pour nommer les pièces jointes téléchargées. Par exemple, prefixe = ["Nom", "Prénom"] aura pour effet d'ajouter le nom et le prénom de l'usager au début du nom de la pièce jointe et après le numéro de dossier s'il est activé. prefixe = [] n'affichera pas de valeurs de champs dans les noms des pièces jointes; dans ce cas il faut mettre numero_dossier à True.
 
 
 Mode d'emploi sous linux : placez le programme ds-download.py dans un nouveau  dossier, ouvrez un terminal dans ce dossier, lancez le programme avec la commande ci-dessous :   
