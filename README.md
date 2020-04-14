@@ -15,19 +15,22 @@ Pour un nouveau formulaire, il est nécessaire de modifier le numéro de la proc
 
 https://www.demarches-simplifiees.fr/admin/procedures/666
 
-procedure = "666"
+PROCEDURE = "666"
 
 Token.
 En tant d'admin, passez en mode usager ou instructeur, puis en haut à droite cliquez l'icône représentant un buste, et enfin
 cliquez sur "voir mon profil". Vous pouvez alors générer votre token. Normalement, à ne modifier qu'une seule fois sauf si vous pensez que votre compte a été compromis. Dans le fichier ds-download.py, modifiez zezezezezezzezezezezeze par le token du compte administrateur.
 
-token = "zezezezezezzezezezezeze"
+TOKEN = "zezezezezezzezezezezeze"
 
 
-Numéro de dossier. Dans la variable booléenne numero_dossier, vous décidez si le numéro de dossier doit apparaître dans le nom de la pièce jointe (True) ou pas (False).
+Numéro de dossier. Dans la variable booléenne PREFIXE_NUMERO_DOSSIER, vous décidez si le numéro de dossier doit apparaître dans le nom de la pièce jointe (True) ou pas (False).
 
 
-Préfixes. Dans la variable prefixes, vous pouvez ajouter des champs de la démarche que vous souhaitez utiliser pour nommer les pièces jointes téléchargées. Par exemple, prefixe = ["Nom", "Prénom"] aura pour effet d'ajouter le nom et le prénom de l'usager au début du nom de la pièce jointe et après le numéro de dossier s'il est activé. prefixe = [] n'affichera pas de valeurs de champs dans les noms des pièces jointes; dans ce cas il faut mettre numero_dossier à True.
+Préfixes. Dans la variable PREFIXES, vous pouvez ajouter des champs de la démarche que vous souhaitez utiliser pour nommer les pièces jointes téléchargées. Par exemple, PREFIXES = ["Nom", "Prénom"] aura pour effet d'ajouter le nom et le prénom de l'usager au début du nom de la pièce jointe et après le numéro de dossier s'il est activé. PREFIXES = [] n'affichera pas de valeurs de champs dans les noms des pièces jointes; dans ce cas il faut mettre PREFIXE_NUMERO_DOSSIER à True.
+
+
+URL API de démarches simplifiées. Il est possible que l'URL de l'API change lors d'une mise à jour donc au cas où vous pouvez la modifier. L'URL est indiquée sur cette page : https://doc.demarches-simplifiees.fr/pour-aller-plus-loin/api
 
 
 Mode d'emploi sous linux : placez le programme ds-download.py dans un nouveau  dossier, ouvrez un terminal dans ce dossier, lancez le programme avec la commande ci-dessous :   
