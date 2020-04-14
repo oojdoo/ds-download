@@ -13,30 +13,20 @@ URL_API = 'https://www.demarches-simplifiees.fr/api/v1/'
 #     SAUF SI VOUS AVEZ DES CONNAISSANCES EN PYTHON!    #
 #########################################################
 
-import json
-import requests
-import os
+import json, requests, os
 from urllib.parse import unquote
 
 # Obtenir les numéros des dossiers d'une procédure
 def get_numeros_dossiers():
     url = URL_API + 'procedures/' + PROCEDURE + '/dossiers?token=' + TOKEN
-    response = requests.get(url)
-    with open('dossiers.json', 'wb') as fichier:
-        fichier.write(response.content)
-    with open('dossiers.json') as fichier:
-        return [e['id'] for e in json.load(fichier)['dossiers']]
+    return [e['id'] for e in requests.get(url).json()['dossiers']]
 
-# Télécharge les dossiers dans un dossier dossiers/
-def get_dossiers(numeros):
+# Obtenir des les informations d'un dossier
+def get_dossier(numero):
     url_part1 = URL_API + 'procedures/' + PROCEDURE + '/dossiers/'
     url_part2 = '?token=' + TOKEN
-    for numero in numeros:
-        url = url_part1 + str(numero) + url_part2
-        response = requests.get(url)
-        os.system('mkdir dossiers')
-        with open('dossiers/' + str(numero), 'wb') as fichier:
-            fichier.write(response.content)
+    url = url_part1 + str(numero) + url_part2
+    return requests.get(url).json()
 
 # création d'une liste des positions des préfixes
 def positions_prefixes(champs):
@@ -54,48 +44,41 @@ def positions_identiques_prefixes(champs):
     return test == PREFIXES
 
 # création du préfixe à ajouter dans le nom des pièces jointes
-def recuperation_prefixe(champs, identite):
+def recuperation_prefixe(champs, numero):
     L = []
     if PREFIXES != []:
         if not positions_identiques_prefixes(champs):
             L = [champs[i]['value'] for i in positions_prefixes(champs)]
         else:
             L = [champs[i]['value'] for i in liste_positions_prefixes]
-    return ' '.join([str(identite)] + L) if PREFIXE_NUMERO_DOSSIER else ' '.join(L)
+    return ' '.join([str(numero)] + L) if PREFIXE_NUMERO_DOSSIER else ' '.join(L)
 
 # Fonction de recherche des pièces jointes dans le dossier et sauvegarde dans pieces_jointes/
-def sauvegarde_pieces_jointes(champs, identite):
+def sauvegarde_pieces_jointes(champs, numero):
     i = 1
     for champ in champs:
         url = champ['value']
         if url != None and 'http' in url and 'filename' in url:
             response = requests.get(url)
             nom_piece = unquote(url[url.find('filename=') + len('filename='):])
-            nom_fichier = 'pieces_jointes/' + recuperation_prefixe(champs, identite) + \
+            nom_fichier = 'pieces_jointes/' + recuperation_prefixe(champs, numero) + \
                           ' piece ' + str(i) + ' ' + nom_piece.replace('&inline', '')
             with open(nom_fichier, 'wb') as f:
                 f.write(response.content)
             print(nom_fichier[15:])
             i = i + 1
 
-# Récupération des numéros des dossiers, puis télécargement des dossiers dans tmp/
+# Récupération des numéros des dossiers
 numeros_dossiers = get_numeros_dossiers()
-get_dossiers(numeros_dossiers)
 
-# création du dossier pièce jointe et ensuite boucle sur chaque identité (ie chaque dossier)         
+# création du dossier pièce jointe et ensuite boucle sur chaque numéro de dossier         
 os.system('mkdir pieces_jointes')
 liste_positions_prefixes = []
 for numero in numeros_dossiers:
-    intitule_dossier = 'dossiers/'+ str(numero)
-    with open(intitule_dossier) as json_file:
-        champs = json.load(json_file)["dossier"]["champs"]
-        if liste_positions_prefixes == []:
-            liste_positions_prefixes = positions_prefixes(champs)
-        sauvegarde_pieces_jointes(champs, numero)        
-
-# on est poli donc on nettoie après
-os.system('rm dossiers.json dossiers/*')
-os.system('rmdir dossiers')
+    champs = get_dossier(numero)["dossier"]["champs"]
+    if liste_positions_prefixes == []:
+        liste_positions_prefixes = positions_prefixes(champs)
+    sauvegarde_pieces_jointes(champs, numero)        
 
 # un message 
 print("Le téléchargement des pièces jointes semble avoir été réalisé avec succès.")
