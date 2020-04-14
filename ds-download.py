@@ -19,14 +19,13 @@ from urllib.parse import unquote
 # Obtenir les numéros des dossiers d'une procédure
 def get_numeros_dossiers():
     url = URL_API + 'procedures/' + PROCEDURE + '/dossiers?token=' + TOKEN
-    return [e['id'] for e in requests.get(url).json()['dossiers']]
+    return [e['id'] for e in requests.get(url, headers={'Authorization': 'Bearer {}'.format(TOKEN)}).json()['dossiers']]
 
 # Obtenir des les informations d'un dossier
 def get_dossier(numero):
     url_part1 = URL_API + 'procedures/' + PROCEDURE + '/dossiers/'
-    url_part2 = '?token=' + TOKEN
-    url = url_part1 + str(numero) + url_part2
-    return requests.get(url).json()
+    url = url_part1 + str(numero)
+    return requests.get(url, headers={'Authorization': 'Bearer {}'.format(TOKEN)}).json()
 
 # création d'une liste des positions des préfixes
 def positions_prefixes(champs):
