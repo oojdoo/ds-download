@@ -37,4 +37,4 @@ Mode d'emploi sous linux : placez le programme ds-download.py dans un nouveau  d
 
 python3 ds-download.py
 
-Remarques : pour windows, vous pouvez utiliser le shell linux. Sans cela, il me semble que ce programme peut être adapté mais je n'ai pas d'ordinateur sous windows...
+Remarques : pour windows, vous pouvez utiliser le shell linux. Sans cela, il me semble que ce programme peut être adapté mais je n'ai pas d'ordinateur sous windows... En retirant la création du dossier pieces_jointes/ et en enregistrant les pièces jointes à la racine du programme, ds-download.py devrait fonctionner à partir de l'invite de commandes (cmd).
