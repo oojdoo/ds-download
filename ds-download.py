@@ -30,9 +30,11 @@ def get_dossier(numero):
 
 # création du préfixe à ajouter dans le nom des pièces jointes
 def recuperation_prefixe(champs, numero):
-    L = [champ['value'] for champ in champs
-                        for prefixe in PREFIXES
-                        if champ['type_de_champ']['libelle'] == prefixe]
+    L = []
+    if PREFIXES != []:
+        L = [champ['value'] for champ in champs
+                            for prefixe in PREFIXES
+                            if champ['type_de_champ']['libelle'] == prefixe]
     return ' '.join([str(numero)] + L) if PREFIXE_NUMERO_DOSSIER else ' '.join(L)
 
 # Fonction de recherche des pièces jointes dans le dossier et sauvegarde dans pieces_jointes/
