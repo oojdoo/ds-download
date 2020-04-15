@@ -50,12 +50,9 @@ def sauvegarde_pieces_jointes(champs, numero):
             print(nom_fichier[len('pieces_jointes/'):])
             i = i + 1
 
-# Récupération des numéros des dossiers sous la forme d'un générateur
-numeros_dossiers = get_numeros_dossiers()
-
 # création du dossier pièce jointe et ensuite boucle sur chaque numéro de dossier         
 os.system('mkdir pieces_jointes')
-for numero in numeros_dossiers:
+for numero in get_numeros_dossiers():
     champs = get_dossier(numero)["dossier"]["champs"]
     sauvegarde_pieces_jointes(champs, numero)        
 
