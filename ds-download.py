@@ -41,11 +41,9 @@ def get_urls_et_prefixe(numero, champs):
     prefixe_pj = ' '.join([str(numero)] + prefixe_pj) if PREFIXE_NUMERO_DOSSIER else ' '.join(prefixe_pj)         
     return urls_pj, prefixe_pj
 
-# Fonction recherche des pièces jointes dans le dossier et sauvegarde dans pieces_jointes/
-def sauvegarde_pieces_jointes(numero):
+# Sauvegarde des pièces jointes dans le dossier pieces_jointes/
+def sauvegarde_pj(urls_pj, prefixe_pj):
     i = 1
-    champs = get_champs_dossier(numero)
-    urls_pj, prefixe_pj = get_urls_et_prefixe(numero, champs)
     for url in urls_pj:
         response = requests.get(url)
         nom_piece = unquote(url[url.find('filename=') + len('filename='):])
@@ -59,5 +57,7 @@ def sauvegarde_pieces_jointes(numero):
 # Création du dossier pièce jointe et ensuite boucle sur chaque numéro de dossier         
 os.system('mkdir pieces_jointes')
 for numero in get_numeros_dossiers():
-    sauvegarde_pieces_jointes(numero)        
+    champs = get_champs_dossier(numero)
+    urls_pj, prefixe_pj = get_urls_et_prefixe(numero, champs)
+    sauvegarde_pj(urls_pj, prefixe_pj)        
 print("Le téléchargement des pièces jointes semble avoir été réalisé avec succès.")
