@@ -38,8 +38,9 @@ def recuperation_prefixe(champs, numero):
     return ' '.join([str(numero)] + L) if PREFIXE_NUMERO_DOSSIER else ' '.join(L)
 
 # Fonction de recherche des pièces jointes dans le dossier et sauvegarde dans pieces_jointes/
-def sauvegarde_pieces_jointes(champs, numero):
+def sauvegarde_pieces_jointes(numero):
     i = 1
+    champs = get_dossier(numero)["dossier"]["champs"]
     for champ in champs:
         url = champ['value']
         if url != None and 'http' in url and 'filename' in url:
@@ -55,8 +56,7 @@ def sauvegarde_pieces_jointes(champs, numero):
 # création du dossier pièce jointe et ensuite boucle sur chaque numéro de dossier         
 os.system('mkdir pieces_jointes')
 for numero in get_numeros_dossiers():
-    champs = get_dossier(numero)["dossier"]["champs"]
-    sauvegarde_pieces_jointes(champs, numero)        
+    sauvegarde_pieces_jointes(numero)        
 
 # un message 
 print("Le téléchargement des pièces jointes semble avoir été réalisé avec succès.")
