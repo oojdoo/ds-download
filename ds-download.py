@@ -23,10 +23,11 @@ def get_numeros_dossiers():
         yield e['id'] 
 
 # Obtenir les informations d'un dossier
-def get_dossier(numero):
+def get_champs_dossier(numero):
     url_part1 = URL_API + 'procedures/' + PROCEDURE + '/dossiers/'
     url = url_part1 + str(numero)
-    return requests.get(url, headers={'Authorization': 'Bearer {}'.format(TOKEN)}).json()
+    dossier = requests.get(url, headers={'Authorization': 'Bearer {}'.format(TOKEN)}).json()
+    return dossier["dossier"]["champs"]
 
 # création du préfixe à ajouter dans le nom des pièces jointes
 def recuperation_prefixe(champs, numero):
@@ -40,7 +41,7 @@ def recuperation_prefixe(champs, numero):
 # Fonction de recherche des pièces jointes dans le dossier et sauvegarde dans pieces_jointes/
 def sauvegarde_pieces_jointes(numero):
     i = 1
-    champs = get_dossier(numero)["dossier"]["champs"]
+    champs = get_champs_dossier(numero)
     for champ in champs:
         url = champ['value']
         if url != None and 'http' in url and 'filename' in url:
