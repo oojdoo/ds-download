@@ -19,7 +19,8 @@ from urllib.parse import unquote
 # Obtenir les numéros des dossiers d'une procédure
 def get_numeros_dossiers():
     url = URL_API + 'procedures/' + PROCEDURE + '/dossiers'
-    return [e['id'] for e in requests.get(url, headers={'Authorization': 'Bearer {}'.format(TOKEN)}).json()['dossiers']]
+    for e in requests.get(url, headers={'Authorization': 'Bearer {}'.format(TOKEN)}).json()['dossiers']:
+        yield e['id'] 
 
 # Obtenir les informations d'un dossier
 def get_dossier(numero):
@@ -49,7 +50,7 @@ def sauvegarde_pieces_jointes(champs, numero):
             print(nom_fichier[len('pieces_jointes/'):])
             i = i + 1
 
-# Récupération des numéros des dossiers
+# Récupération des numéros des dossiers sous la forme d'un générateur
 numeros_dossiers = get_numeros_dossiers()
 
 # création du dossier pièce jointe et ensuite boucle sur chaque numéro de dossier         
