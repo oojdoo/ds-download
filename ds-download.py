@@ -29,30 +29,33 @@ def get_champs_dossier(numero):
     dossier = requests.get(url, headers={'Authorization': 'Bearer {}'.format(TOKEN)}).json()
     return dossier["dossier"]["champs"]
 
-# création du préfixe à ajouter dans le nom des pièces jointes
-def recuperation_prefixe(champs, numero):
-    L = []
-    if PREFIXES != []:
-        L = [champ['value'] for champ in champs
-                            for prefixe in PREFIXES
-                            if champ['type_de_champ']['libelle'] == prefixe]
-    return ' '.join([str(numero)] + L) if PREFIXE_NUMERO_DOSSIER else ' '.join(L)
+# recherche urls des pièces jointes et création du préfixe du nom des pièces jointes
+def get_urls_et_prefixe(numero, champs):
+    urls_pj, prefixe_pj = [], []
+    for champ in champs:
+        for prefixe in PREFIXES:
+            if champ['type_de_champ']['libelle'] == prefixe:
+                prefixe_pj.append(champ['value'])
+        url = champ['value']
+        if url != None and 'http' in url and 'filename' in url:
+            urls_pj.append(url)
+    prefixe_pj = ' '.join([str(numero)] + prefixe_pj) if PREFIXE_NUMERO_DOSSIER else ' '.join(prefixe_pj)         
+    return urls_pj, prefixe_pj
 
-# Fonction de recherche des pièces jointes dans le dossier et sauvegarde dans pieces_jointes/
+# Fonction recherche des pièces jointes dans le dossier et sauvegarde dans pieces_jointes/
 def sauvegarde_pieces_jointes(numero):
     i = 1
     champs = get_champs_dossier(numero)
-    for champ in champs:
-        url = champ['value']
-        if url != None and 'http' in url and 'filename' in url:
-            response = requests.get(url)
-            nom_piece = unquote(url[url.find('filename=') + len('filename='):])
-            nom_fichier = 'pieces_jointes/' + recuperation_prefixe(champs, numero) + \
-                          ' piece ' + str(i) + ' ' + nom_piece.replace('&inline', '')
-            with open(nom_fichier, 'wb') as f:
-                f.write(response.content)
-            print(nom_fichier[len('pieces_jointes/'):])
-            i = i + 1
+    urls_pj, prefixe_pj = get_urls_et_prefixe(numero, champs)
+    for url in urls_pj:
+        response = requests.get(url)
+        nom_piece = unquote(url[url.find('filename=') + len('filename='):])
+        nom_fichier = 'pieces_jointes/' + prefixe_pj + ' piece ' + str(i) + \
+                      ' ' + nom_piece.replace('&inline', '')
+        with open(nom_fichier, 'wb') as f:
+            f.write(response.content)
+        print(nom_fichier[len('pieces_jointes/'):])
+        i = i + 1
 
 # création du dossier pièce jointe et ensuite boucle sur chaque numéro de dossier         
 os.system('mkdir pieces_jointes')
