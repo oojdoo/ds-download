@@ -24,12 +24,11 @@ def get_numeros_dossiers():
 
 # Obtenir les informations d'un dossier
 def get_champs_dossier(numero):
-    url_part1 = URL_API + 'procedures/' + PROCEDURE + '/dossiers/'
-    url = url_part1 + str(numero)
+    url = URL_API + 'procedures/' + PROCEDURE + '/dossiers/' + str(numero)
     dossier = requests.get(url, headers={'Authorization': 'Bearer {}'.format(TOKEN)}).json()
     return dossier["dossier"]["champs"]
 
-# recherche urls des pièces jointes et création du préfixe du nom des pièces jointes
+# Recherche urls des pièces jointes et création du préfixe du nom des pièces jointes
 def get_urls_et_prefixe(numero, champs):
     urls_pj, prefixe_pj = [], []
     for champ in champs:
@@ -57,10 +56,8 @@ def sauvegarde_pieces_jointes(numero):
         print(nom_fichier[len('pieces_jointes/'):])
         i = i + 1
 
-# création du dossier pièce jointe et ensuite boucle sur chaque numéro de dossier         
+# Création du dossier pièce jointe et ensuite boucle sur chaque numéro de dossier         
 os.system('mkdir pieces_jointes')
 for numero in get_numeros_dossiers():
     sauvegarde_pieces_jointes(numero)        
-
-# un message 
 print("Le téléchargement des pièces jointes semble avoir été réalisé avec succès.")
