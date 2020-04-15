@@ -13,7 +13,8 @@ URL_API = 'https://www.demarches-simplifiees.fr/api/v1/'
 #     SAUF SI VOUS AVEZ DES CONNAISSANCES EN PYTHON!    #
 #########################################################
 
-import json, requests, os
+import requests
+from os import system
 from urllib.parse import unquote
 
 # Obtenir les numéros des dossiers d'une procédure
@@ -55,7 +56,7 @@ def sauvegarde_pj(urls_pj, prefixe_pj):
         i = i + 1
 
 # Création du dossier pièce jointe et ensuite boucle sur chaque numéro de dossier         
-os.system('mkdir pieces_jointes')
+system('mkdir pieces_jointes')
 for numero in get_numeros_dossiers():
     champs = get_champs_dossier(numero)
     urls_pj, prefixe_pj = get_urls_et_prefixe(numero, champs)
