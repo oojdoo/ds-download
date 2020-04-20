@@ -6,13 +6,28 @@ To the extent possible under law, oojdoo has waived all copyright and related or
 
 ## ds download
 
-Vous avez deux possibilités pour utiliser ds_download :
-1) vous modifiez le fichier ds_download.py et vous le lancez dans un terminal (voir partie "ds_download sous linux"),
-2) vous utilisez l'interface graphique ds_download_gui.py qu'il suffit de lancer dans un terminal (voir partie "ds_download_gui sous linux").
+Vous avez trois possibilités pour utiliser ds_download :
+1) sous windows, vous pouvez utiliser ds_download_windows_gui.zip qui contient un exécutable,
+2) vous modifiez le fichier ds_download.py et vous le lancez dans un terminal (voir partie "ds_download sous linux"),
+3) vous utilisez l'interface graphique ds_download_gui.py qu'il suffit de lancer dans un terminal (voir partie "ds_download_gui sous linux").
 
 Pour les deux programmes, avant tout, il est nécessaire d'installer Python 3 et de vérifier que les modules python : requests, os, errno et urllib (ainsi que tkinter pour ds_download_gui.py) sont installés. Dans le cas contraire, vous pouvez les installer en utilisant ce type de commande (en remplaçant NOM_MODULE par requests pour installer requests) :
 
 python -m pip install NOM_MODULE
+
+## ds_download_gui_windows sous windows
+
+Objectif : interface graphique permettant de télécharger des pièces jointes sur demarches-simplifiees.fr via l'API. Le programme télécharge les pièces jointes avec le numéro identifiant en préfixe.
+
+Mode d'emploi : télécharger le fichier ds_download_windows_gui.zip puis l'extraire, cliquez sur ds_download_windows_gui.exe et renseignez le numéro de la procédure qui se trouve dans l'url de votre nagigateur lorsque vous modifiez votre formulaire en tant qu'admin. Exemple de numéro de procédure égal à 666.
+
+https://www.demarches-simplifiees.fr/admin/procedures/666
+
+Token.
+En tant d'admin, passez en mode usager ou instructeur, puis en haut à droite cliquez l'icône représentant un buste, et enfin
+cliquez sur "voir mon profil". Vous pouvez alors générer votre token.
+
+Les pièces se trouveront dans le dossier pieces_jointes à la racine du dossier du programme ds_download_windows_gui.exe.
 
 ## ds_download_gui sous linux
 
@@ -20,7 +35,7 @@ python -m pip install NOM_MODULE
 
 Objectif : interface graphique permettant de télécharger des pièces jointes sur demarches-simplifiees.fr via l'API. Le programme télécharge les pièces jointes avec le numéro identifiant en préfixe.
 
-Mode d'emploi sous linux : placez les programmes ds_download.py et ds_download_gui.py dans un nouveau  dossier, ouvrez un terminal dans ce dossier, lancez le programme ds_download_gui.py  avec la commande ci-dessous :   
+Mode d'emploi sous linux : placez les programmes ds_download.py et ds_download_gui.py dans un nouveau dossier, ouvrez un terminal dans ce dossier, lancez le programme ds_download_gui.py  avec la commande ci-dessous :   
 
 python3 ds_download.py
 
