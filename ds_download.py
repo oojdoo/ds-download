@@ -1,3 +1,8 @@
+###################################################################
+#  Programme sous licence creative commons CC0 1.0 Public Domain  #
+#  https://creativecommons.org/publicdomain/zero/1.0/deed.fr      #
+###################################################################
+
 #########################################################
 #        CONFIGURATION DU PROGRAMME                     #
 #        VOUS DEVEZ MODIFIER CE QUI SUIT                #
@@ -17,15 +22,14 @@ import requests, os, errno
 from urllib.parse import unquote
 
 # Obtenir les numéros des dossiers d'une procédure
-def get_numeros_dossiers():
-    url = URL_API + 'procedures/' + PROCEDURE + '/dossiers'
-    for e in requests.get(url, headers={'Authorization': 'Bearer {}'.format(TOKEN)}).json()['dossiers']:
-        yield e['id'] 
+def get_numeros_dossiers(procedure, token):
+    url = URL_API + 'procedures/' + procedure + '/dossiers'
+    return [e['id'] for e in requests.get(url, headers={'Authorization': 'Bearer {}'.format(token)}).json()['dossiers']]
 
 # Obtenir les informations d'un dossier
-def get_champs_dossier(numero):
-    url = URL_API + 'procedures/' + PROCEDURE + '/dossiers/' + str(numero)
-    dossier = requests.get(url, headers={'Authorization': 'Bearer {}'.format(TOKEN)}).json()
+def get_champs_dossier(numero, procedure, token):
+    url = URL_API + 'procedures/' + procedure + '/dossiers/' + str(numero)
+    dossier = requests.get(url, headers={'Authorization': 'Bearer {}'.format(token)}).json()
     return dossier["dossier"]["champs"]
 
 # Recherche urls des pièces jointes et création du préfixe du nom des pièces jointes
@@ -53,16 +57,23 @@ def sauvegarde_pj(urls_pj, prefixe_pj):
             f.write(response.content)
         print(nom_fichier[len('pieces_jointes/'):])
         i = i + 1
+        
+def lancement(procedure, token):
+    # Création du dossier pièce jointe et ensuite boucle sur chaque numéro de dossier         
+    etat = False
+    try:
+        os.mkdir('pieces_jointes')
+    except OSError as exc:
+        if exc.errno != errno.EEXIST:
+            raise
+        pass
+    for numero in get_numeros_dossiers(procedure, token):
+        champs = get_champs_dossier(numero, procedure, token)
+        urls_pj, prefixe_pj = get_urls_et_prefixe(numero, champs)
+        sauvegarde_pj(urls_pj, prefixe_pj)
+        etat = True
+    return etat
 
-# Création du dossier pièce jointe et ensuite boucle sur chaque numéro de dossier         
-try:
-    os.mkdir('pieces_jointes')
-except OSError as exc:
-    if exc.errno != errno.EEXIST:
-        raise
-    pass
-for numero in get_numeros_dossiers():
-    champs = get_champs_dossier(numero)
-    urls_pj, prefixe_pj = get_urls_et_prefixe(numero, champs)
-    sauvegarde_pj(urls_pj, prefixe_pj)        
-print("Le téléchargement des pièces jointes semble avoir été réalisé avec succès.")
+if __name__ == '__main__':
+    if lancement(PROCEDURE, TOKEN):
+        print("Le téléchargement des pièces jointes semble avoir été réalisé avec succès.")
