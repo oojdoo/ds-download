@@ -7,17 +7,20 @@ To the extent possible under law, oojdoo has waived all copyright and related or
 ## ds download
 
 Vous avez deux possibilités pour utiliser ds_download :
-1) vous modifiez le fichier ds\_download.py et vous le lancer dans un terminal (voir partie "ds_download sous linux"),
-2) vous utilisez l'interface graphique ds\_download\_gui.py qu'il suffit de lancer dans un terminal (voir partie "ds\_download_gui sous linux").
+1) vous modifiez le fichier ds_download.py et vous le lancer dans un terminal (voir partie "ds_download sous linux"),
+2) vous utilisez l'interface graphique ds_download_gui.py qu'il suffit de lancer dans un terminal (voir partie "ds\_download_gui sous linux").
 
-Pour les deux programmes, avant tout, il est nécessaire d'installer Python 3 et de vérifier que les modules python : requests, os, errno et urllib (ainsi que tkinter pour ds\_download\_gui.py) sont installés. Dans le cas contraire, vous pouvez les installer en utilisant ce type de commande (en remplaçant NOM_MODULE par requests pour installer requests) :
+Pour les deux programmes, avant tout, il est nécessaire d'installer Python 3 et de vérifier que les modules python : requests, os, errno et urllib (ainsi que tkinter pour ds_download_gui.py) sont installés. Dans le cas contraire, vous pouvez les installer en utilisant ce type de commande (en remplaçant NOM_MODULE par requests pour installer requests) :
 
 python -m pip install NOM_MODULE
 
 ## ds_download_gui sous linux
+
+<img src="https://github.com/oojdoo/ds-download/blob/master/ds_download_gui_capture.png" alt="Capture ds_download_gui.">
+
 Objectif : interface graphique permettant de télécharger des pièces jointes sur demarches-simplifiees.fr via l'API. Le programme télécharge les pièces jointes avec le numéro identifiant en préfixe.
 
-Mode d'emploi sous linux : placez les programmes ds\_download.py et ds\_download\_gui.py dans un nouveau  dossier, ouvrez un terminal dans ce dossier, lancez le programme ds\_download\_gui.py  avec la commande ci-dessous :   
+Mode d'emploi sous linux : placez les programmes ds_download.py et ds_download_gui.py dans un nouveau  dossier, ouvrez un terminal dans ce dossier, lancez le programme ds_download_gui.py  avec la commande ci-dessous :   
 
 python3 ds_download.py
 
