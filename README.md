@@ -11,6 +11,10 @@ Objectif : télécharger des pièces jointes sur demarches-simplifiees.fr via l'
 
 Mode d'emploi et configuration du fichier ds-download.py
 
+Avant tout, il est nécessaire d'installer Python 3 et de vérifier que les modules python : requests, os, errno et urllib sont installés. Dans le cas contraire, vous pouvez les installer en utilisant ce type de commande (en remplaçant NOM_MODULE par requests pour installer requests) :
+
+python -m pip install NOM_MODULE
+
 
 Pour un nouveau formulaire, il est nécessaire de modifier le numéro de la procédure qui se trouve dans l'url de votre nagigateur lorsque vous modifiez votre formulaire en tant qu'admin. Dans le fichier ds-download.py, modifiez 666 par le numéro de votre procédure.
 
