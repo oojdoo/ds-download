@@ -15,6 +15,9 @@ Pour les deux programmes, avant tout, il est nécessaire d'installer Python 3 et
 python -m pip install NOM_MODULE
 
 ## ds_download_gui sous linux
+
+<img src="https://github.com/oojdoo/ds-download/blob/master/ds_download_gui_capture.png" alt="Capture ds_download_gui.">
+
 Objectif : interface graphique permettant de télécharger des pièces jointes sur demarches-simplifiees.fr via l'API. Le programme télécharge les pièces jointes avec le numéro identifiant en préfixe.
 
 Mode d'emploi sous linux : placez les programmes ds\_download.py et ds\_download\_gui.py dans un nouveau  dossier, ouvrez un terminal dans ce dossier, lancez le programme ds\_download\_gui.py  avec la commande ci-dessous :   
