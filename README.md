@@ -7,9 +7,9 @@ To the extent possible under law, oojdoo has waived all copyright and related or
 ## ds download
 
 Vous avez trois possibilités pour utiliser ds_download :
-1) sous windows, vous pouvez utiliser ds_download_windows_gui.zip qui contient un exécutable,
-2) vous modifiez le fichier ds_download.py et vous le lancez dans un terminal (voir partie "ds_download sous linux"),
-3) vous utilisez l'interface graphique ds_download_gui.py qu'il suffit de lancer dans un terminal (voir partie "ds_download_gui sous linux").
+1) sous windows, vous pouvez utiliser l'interface graphique .exe contenue dans l'archive ds_download_windows_gui.zip (voir partie "ds_download_gui_windows sous windows"),
+2) sous linux, vous pouvez modifier le fichier ds_download.py puis le lancer dans un terminal (voir partie "ds_download sous linux"),
+3) sou slinux, vous pouvez utiliser l'interface graphique ds_download_gui.py qu'il suffit de lancer dans un terminal (voir partie "ds_download_gui sous linux").
 
 ## ds_download_gui_windows sous windows
 
@@ -86,5 +86,3 @@ URL API de démarches simplifiées. Il est possible que l'URL de l'API change lo
 Mode d'emploi sous linux : placez le programme ds_download.py dans un nouveau  dossier, ouvrez un terminal dans ce dossier, lancez le programme avec la commande ci-dessous :   
 
 python3 ds_download.py
-
-Remarques : pour windows, vous pouvez utiliser le shell linux. Sans cela, il me semble que ce programme peut être adapté mais je n'ai pas d'ordinateur sous windows... En retirant la création du dossier pieces_jointes/ et en enregistrant les pièces jointes à la racine du programme, ds-download.py devrait fonctionner à partir de l'invite de commandes (cmd).
