@@ -2,7 +2,8 @@
 Télécharger toutes les pièces jointes d'une démarche effectuée sur demarches-simplifiees.fr via l'API fourni par Démarches simplifiées. 
 
 
-Programme sous licence creative commons CC-Zero.    
+Programme sous licence creative commons CC0 1.0 - Public Domain : https://creativecommons.org/publicdomain/zero/1.0/deed.fr
+To the extent possible under law, oojdoo has waived all copyright and related or neighboring rights to ds-download. This work is published from: France.  
 
 
 Objectif : télécharger des pièces jointes sur demarches-simplifiees.fr via l'API. Le programme télécharge les pièces jointes avec le numéro identifiant au début des noms des pièces jointes. Ce programme n'est pas "propre" mais je l'ai simplement rédigé pour l'usage de mon lycée et je n'ai pas forcément l'intention de l'améliorer ou de le maintenir. À vous de le faire.
