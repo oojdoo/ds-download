@@ -7,8 +7,8 @@ To the extent possible under law, oojdoo has waived all copyright and related or
 ## ds download
 
 Vous avez deux possibilités pour utiliser ds_download :
-1) vous modifiez le fichier ds_download.py et vous le lancer dans un terminal (voir partie "ds_download sous linux"),
-2) vous utilisez l'interface graphique ds_download_gui.py qu'il suffit de lancer dans un terminal (voir partie "ds\_download_gui sous linux").
+1) vous modifiez le fichier ds_download.py et vous le lancez dans un terminal (voir partie "ds_download sous linux"),
+2) vous utilisez l'interface graphique ds_download_gui.py qu'il suffit de lancer dans un terminal (voir partie "ds_download_gui sous linux").
 
 Pour les deux programmes, avant tout, il est nécessaire d'installer Python 3 et de vérifier que les modules python : requests, os, errno et urllib (ainsi que tkinter pour ds_download_gui.py) sont installés. Dans le cas contraire, vous pouvez les installer en utilisant ce type de commande (en remplaçant NOM_MODULE par requests pour installer requests) :
 
