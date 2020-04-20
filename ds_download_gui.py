@@ -20,7 +20,7 @@ def build_frame(titre, window, liste):
     text.set('Complétez les deux champs et soyez patient après avoir validé.')
     etat = tk.Label(frame, textvariable=text)
     liste_variables = [tk.StringVar() for e in liste]
-    liste_entries = [tk.Entry(frame, textvariable=v) for v in liste_variables]
+    liste_entries = [tk.Entry(frame, textvariable=v, width = 29) for v in liste_variables]
     button_submit = tk.Button(frame, text = "    Valider   ", command=recupere_proc)
     for i in range(len(liste)):
         liste_labels[i].grid(row = i, column = 0)
