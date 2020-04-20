@@ -17,6 +17,8 @@ python -m pip install NOM_MODULE
 
 ## ds_download_gui_windows sous windows
 
+<img src="https://github.com/oojdoo/ds-download/blob/master/ds_download_gui_windows_capture.png" alt="Capture ds_download_gui_windows.">
+
 Objectif : interface graphique permettant de télécharger des pièces jointes sur demarches-simplifiees.fr via l'API. Le programme télécharge les pièces jointes avec le numéro identifiant en préfixe.
 
 Mode d'emploi : télécharger le fichier ds_download_windows_gui.zip puis l'extraire, cliquez sur ds_download_windows_gui.exe et renseignez le numéro de la procédure qui se trouve dans l'url de votre nagigateur lorsque vous modifiez votre formulaire en tant qu'admin. Exemple de numéro de procédure égal à 666.
