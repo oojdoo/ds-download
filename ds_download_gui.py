@@ -34,7 +34,6 @@ def build_frame(titre, window, liste):
 if __name__ == '__main__': 
     fenetre = tk.Tk()
     fenetre.title('ds_download_gui')
-    fenetre.geometry('468x158')
     fenetre.resizable(width=False, height=False)
     frame = build_frame("Configuration de la procédure",
                         fenetre, ["Numéro de procédure", "Token"])
