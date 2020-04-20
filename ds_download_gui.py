@@ -6,7 +6,7 @@
 import tkinter as tk
 import ds_download
 
-def build_frame(titre, window, liste, row, column, color_bg = ''):
+def build_frame(titre, window, liste):
     def recupere_proc():
         if ds_download.lancement(liste_entries[0].get(), liste_entries[1].get()):
             text.set("Terminé! Les pièces jointes se trouvent dans le dossier pieces_jointes.")
@@ -32,7 +32,6 @@ def build_frame(titre, window, liste, row, column, color_bg = ''):
 if __name__ == '__main__': 
     fenetre = tk.Tk()
     fenetre.title('ds_download_gui')
-    fenetre['bg']='white' 
     frame = build_frame("Configuration de la procédure",
-                        fenetre, ["Numéro de procédure", "Token"], 0, 0)
+                        fenetre, ["Numéro de procédure", "Token"])
     fenetre.mainloop()
