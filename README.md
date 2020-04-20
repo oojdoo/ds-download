@@ -11,10 +11,6 @@ Vous avez trois possibilités pour utiliser ds_download :
 2) vous modifiez le fichier ds_download.py et vous le lancez dans un terminal (voir partie "ds_download sous linux"),
 3) vous utilisez l'interface graphique ds_download_gui.py qu'il suffit de lancer dans un terminal (voir partie "ds_download_gui sous linux").
 
-Pour les deux programmes, avant tout, il est nécessaire d'installer Python 3 et de vérifier que les modules python : requests, os, errno et urllib (ainsi que tkinter pour ds_download_gui.py) sont installés. Dans le cas contraire, vous pouvez les installer en utilisant ce type de commande (en remplaçant NOM_MODULE par requests pour installer requests) :
-
-python -m pip install NOM_MODULE
-
 ## ds_download_gui_windows sous windows
 
 <img src="https://github.com/oojdoo/ds-download/blob/master/ds_download_gui_windows_capture.png" alt="Capture ds_download_gui_windows.">
@@ -37,6 +33,10 @@ Les pièces se trouveront dans le dossier pieces_jointes à la racine du dossier
 
 Objectif : interface graphique permettant de télécharger des pièces jointes sur demarches-simplifiees.fr via l'API. Le programme télécharge les pièces jointes avec le numéro identifiant en préfixe.
 
+Avant tout, il est nécessaire d'installer Python 3 et de vérifier que les modules python : requests, os, errno et urllib (ainsi que tkinter pour ds_download_gui.py) sont installés. Dans le cas contraire, vous pouvez les installer en utilisant ce type de commande (en remplaçant NOM_MODULE par requests pour installer requests) :
+
+python -m pip install NOM_MODULE
+
 Mode d'emploi sous linux : placez les programmes ds_download.py et ds_download_gui.py dans un nouveau dossier, ouvrez un terminal dans ce dossier, lancez le programme ds_download_gui.py  avec la commande ci-dessous :   
 
 python3 ds_download.py
@@ -54,6 +54,10 @@ cliquez sur "voir mon profil". Vous pouvez alors générer votre token.
 
 
 Objectif : télécharger des pièces jointes sur demarches-simplifiees.fr via l'API. Le programme télécharge les pièces jointes avec le numéro identifiant au début des noms des pièces jointes. Ce programme n'est pas "propre" mais je l'ai simplement rédigé pour l'usage de mon lycée et je n'ai pas forcément l'intention de l'améliorer ou de le maintenir. À vous de le faire.
+
+Avant tout, il est nécessaire d'installer Python 3 et de vérifier que les modules python : requests, os, errno et urllib (ainsi que tkinter pour ds_download_gui.py) sont installés. Dans le cas contraire, vous pouvez les installer en utilisant ce type de commande (en remplaçant NOM_MODULE par requests pour installer requests) :
+
+python -m pip install NOM_MODULE
 
 Mode d'emploi et configuration du fichier ds-download.py (ouvrez le fichier ds-download.py avec un éditer de texte tel que Notepad)
 
