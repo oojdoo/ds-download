@@ -9,8 +9,11 @@ import ds_download
 def build_frame(titre, window, liste, row, column, color_bg = ''):
     def recupere_proc():
         if ds_download.lancement(liste_entries[0].get(), liste_entries[1].get()):
-            text.set("Les pièces jointes se trouvent dans le dossier pieces_jointes")
-            etat.config(bg="green", fg="white")
+            text.set("Terminé! Les pièces jointes se trouvent dans le dossier pieces_jointes.")
+            etat.config(bg="green", fg="white") 
+        else:
+            text.set("        Le téléchargement a échoué. Vérifiez les deux champs.      ")
+            etat.config(bg="red", fg="white")
     frame = tk.LabelFrame(window, text=titre, padx = 20, pady = 20)
     liste_labels = [tk.Label(frame, text=e + ' :') for e in liste]
     text = tk.StringVar()
@@ -23,8 +26,8 @@ def build_frame(titre, window, liste, row, column, color_bg = ''):
         liste_labels[i].grid(row = i, column = 0)
         liste_entries[i].grid(row = i, column = 1)
     button_submit.grid(row = len(liste), columnspan = 2)
-    etat.grid(row = 3,columnspan = 2)
-    frame.grid(row = row, column = column, sticky="nsew")
+    etat.grid(row = 3, columnspan = 2)
+    frame.grid(sticky="nsew")
 
 if __name__ == '__main__': 
     fenetre = tk.Tk()

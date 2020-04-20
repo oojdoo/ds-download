@@ -67,13 +67,18 @@ def lancement(procedure, token):
         if exc.errno != errno.EEXIST:
             raise
         pass
-    for numero in get_numeros_dossiers(procedure, token):
-        champs = get_champs_dossier(numero, procedure, token)
-        urls_pj, prefixe_pj = get_urls_et_prefixe(numero, champs)
-        sauvegarde_pj(urls_pj, prefixe_pj)
-        etat = True
+    try :
+        for numero in get_numeros_dossiers(procedure, token):
+            champs = get_champs_dossier(numero, procedure, token)
+            urls_pj, prefixe_pj = get_urls_et_prefixe(numero, champs)
+            sauvegarde_pj(urls_pj, prefixe_pj)
+            etat = True
+    except:
+        pass
     return etat
 
 if __name__ == '__main__':
     if lancement(PROCEDURE, TOKEN):
         print("Le téléchargement des pièces jointes semble avoir été réalisé avec succès.")
+    else:
+        print("Le téléchargement a échoué. Vérifiez la configuration du fichier.")
