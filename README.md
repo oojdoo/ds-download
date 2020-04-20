@@ -9,7 +9,7 @@ To the extent possible under law, oojdoo has waived all copyright and related or
 Vous avez trois possibilités pour utiliser ds_download :
 1) sous windows, vous pouvez utiliser l'interface graphique .exe contenue dans l'archive ds_download_windows_gui.zip (voir partie "ds_download_gui_windows sous windows"),
 2) sous linux, vous pouvez modifier le fichier ds_download.py puis le lancer dans un terminal (voir partie "ds_download sous linux"),
-3) sou slinux, vous pouvez utiliser l'interface graphique ds_download_gui.py qu'il suffit de lancer dans un terminal (voir partie "ds_download_gui sous linux").
+3) sous linux, vous pouvez utiliser l'interface graphique ds_download_gui.py qu'il suffit de lancer dans un terminal (voir partie "ds_download_gui sous linux").
 
 ## ds_download_gui_windows sous windows
 
