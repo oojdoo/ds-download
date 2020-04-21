@@ -70,7 +70,7 @@ def creation_dossier_pjs(procedure):
     try:
         os_name = platform.system()
         if os_name == 'Windows':
-            os.startfile(dossier_pj + '/')
+            os.startfile(dossier_pj)
         elif os_name == 'Linux':
             os.system('xdg-open "%s"' % dossier_pj)
         elif os_name == 'Darwin':
