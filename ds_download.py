@@ -18,7 +18,7 @@ URL_API = 'https://www.demarches-simplifiees.fr/api/v1/'
 #     SAUF SI VOUS AVEZ DES CONNAISSANCES EN PYTHON!    #
 #########################################################
 
-import requests, os, errno
+import requests, os, errno, platform
 from urllib.parse import unquote
 
 # Obtenir les numéros des dossiers d'une procédure
@@ -45,34 +45,52 @@ def get_urls_et_prefixe(numero, champs):
     prefixe_pj = ' '.join([str(numero)] + prefixe_pj) if PREFIXE_NUMERO_DOSSIER else ' '.join(prefixe_pj)         
     return urls_pj, prefixe_pj
 
-# Sauvegarde des pièces jointes dans le dossier pieces_jointes/
-def sauvegarde_pj(urls_pj, prefixe_pj):
+# Sauvegarde des pièces jointes dans le dossier pieces_jointes_NUMERO_PROCEDURE
+def sauvegarde_pj(procedure, urls_pj, prefixe_pj):
     i = 1
     for url in urls_pj:
         response = requests.get(url)
         nom_piece = unquote(url[url.find('filename=') + len('filename='):])
-        nom_fichier = 'pieces_jointes/' + prefixe_pj + ' piece ' + str(i) + \
-                      ' ' + nom_piece.replace('&inline', '')
+        nom_fichier = 'pieces_jointes_' + procedure + '/' + prefixe_pj + ' piece ' + \
+                      str(i) + ' ' + nom_piece.replace('&inline', '')
         with open(nom_fichier, 'wb') as f:
             f.write(response.content)
-        print(nom_fichier[len('pieces_jointes/'):])
+        print(nom_fichier[len('pieces_jointes_' + procedure + '/'):])
         i = i + 1
-        
-def lancement(procedure, token):
-    # Création du dossier pièce jointe et ensuite boucle sur chaque numéro de dossier         
-    etat = False
-    try:
-        os.mkdir('pieces_jointes')
+
+# Création et ouverture du dossier pièce jointe
+def creation_dossier_pjs(procedure):
+    dossier_pj = 'pieces_jointes_' + procedure
+    try:   
+        os.mkdir(dossier_pj) 
     except OSError as exc:
         if exc.errno != errno.EEXIST:
             raise
         pass
+    try:
+        os_name = platform.system()
+        if os_name == 'Windows':
+            os.startfile(dossier_pj + '/')
+        elif os_name == 'Linux':
+            os.system('xdg-open "%s"' % dossier_pj)
+        elif os_name == 'Darwin':
+            os.system('open "%s"' % dossier_pj)
+    except:
+        pass
+
+# Lancement du programme
+def lancement(procedure, token):        
+    etat = False
     try :
-        for numero in get_numeros_dossiers(procedure, token):
-            champs = get_champs_dossier(numero, procedure, token)
-            urls_pj, prefixe_pj = get_urls_et_prefixe(numero, champs)
-            sauvegarde_pj(urls_pj, prefixe_pj)
-            etat = True
+        # boucle sur chaque numéro de dossier pour sauvegarder les pièces jointes
+        numeros_dossiers = get_numeros_dossiers(procedure, token)
+        if numeros_dossiers != []:
+            creation_dossier_pjs(procedure)
+            for numero in numeros_dossiers:
+                champs = get_champs_dossier(numero, procedure, token)
+                urls_pj, prefixe_pj = get_urls_et_prefixe(numero, champs)
+                sauvegarde_pj(procedure, urls_pj, prefixe_pj)
+                etat = True
     except:
         pass
     return etat

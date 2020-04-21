@@ -14,7 +14,7 @@ def build_frame(titre, window, liste):
             text.set('Les pièces jointes se trouvent dans le dossier pieces_jointes.')
             etat.config(bg="green", fg="white") 
         else:
-            text.set("Le téléchargement a échoué.Vérifiez les deux champs ci-dessus.")
+            text.set('Le téléchargement a échoué. Vérifiez les deux champs ci-dessus.')
             etat.config(bg="red", fg="white")
     frame = tk.LabelFrame(window, text=titre, padx = 20, pady = 20)
     liste_labels = [tk.Label(frame, text=e + ' :') for e in liste]
