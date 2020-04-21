@@ -2,12 +2,10 @@
 #  Programme sous licence creative commons CC0 1.0 Public Domain  #
 #  https://creativecommons.org/publicdomain/zero/1.0/deed.fr      #
 ###################################################################
-try:
-    import tkinter as tk
-except:
-    import Tkinter as tk
+import tkinter as tk
 import ds_download
 
+# Contruction de l'interface graphique
 def build_frame(titre, window, liste):
     def recupere_proc():
         if ds_download.lancement(liste_entries[0].get(), liste_entries[1].get()):
@@ -31,6 +29,7 @@ def build_frame(titre, window, liste):
     etat.grid(row = 3, columnspan = 2)
     frame.grid(sticky="nsew")
 
+# lancement du programme
 if __name__ == '__main__': 
     fenetre = tk.Tk()
     fenetre.title('ds_download_gui')
