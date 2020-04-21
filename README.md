@@ -21,7 +21,7 @@ Remarque : le programme ds_download.py permet aussi d'ajouter d'autres préfixes
 
 Objectif : interface graphique permettant de télécharger des pièces jointes sur demarches-simplifiees.fr via l'API. Le programme télécharge les pièces jointes avec le numéro identifiant en préfixe.
 
-Mode d'emploi : télécharger le fichier ds_download_windows_gui.zip puis l'extraire, cliquez sur ds_download_windows_gui.exe et renseignez le numéro de la procédure qui se trouve dans l'url de votre nagigateur lorsque vous modifiez votre formulaire en tant qu'admin. Exemple de numéro de procédure égal à 666.
+Mode d'emploi : télécharger le fichier ds_download_windows_gui.zip puis l'extraire, cliquez sur ds_download_windows_gui.exe(si windows vous avertit d'un risque, alors "Informations supplémentaires" puis "Exécuter") et renseignez le numéro de la procédure qui se trouve dans l'url de votre nagigateur lorsque vous modifiez votre formulaire en tant qu'admin. Exemple de numéro de procédure égal à 666.
 
 https://www.demarches-simplifiees.fr/admin/procedures/666
 
