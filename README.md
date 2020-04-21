@@ -23,7 +23,7 @@ Objectif : interface graphique permettant de télécharger des pièces jointes s
 
 Mode d'emploi : 
 
-1) télécharger et installer Python 3, par exemple pour 64bits : https://www.python.org/ftp/python/3.8.2/python-3.8.2-amd64.exe
+1) vérifier que vous possédez Redistribuable Visual C++ pour Visual Studio 2015 que vous pouvez télécharger ici : https://www.microsoft.com/fr-fr/download/details.aspx?id=48145
 
 2) télécharger le fichier ds_download_windows_gui.zip puis l'extraire, cliquez sur ds_download_windows_gui.exe(si windows vous avertit d'un risque, alors "Informations supplémentaires" puis "Exécuter") et renseignez le numéro de la procédure qui se trouve dans l'url de votre nagigateur lorsque vous modifiez votre formulaire en tant qu'admin. Exemple de numéro de procédure égal à 666.
 
