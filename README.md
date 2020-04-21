@@ -10,7 +10,10 @@ Vous avez trois possibilités pour utiliser ds_download :
 1) sous windows, vous pouvez utiliser l'interface graphique .exe contenue dans l'archive ds_download_windows_gui.zip (voir partie "ds_download_gui_windows sous windows"),
 2) sous linux, vous pouvez utiliser l'interface graphique ds_download_gui.py qu'il suffit de lancer dans un terminal (voir partie "ds_download_gui sous linux").
 3) sous linux, vous pouvez modifier le fichier ds_download.py puis le lancer dans un terminal (voir partie "ds_download sous linux"),
- 
+
+Pour les méthodes 2) et 3), normalement il est possible de les utiliser sous windows via le cmd ou un terminal bash.
+
+Remarque : le programme ds_download.py permet aussi d'ajouter d'autres préfixes dans les noms des fichiers à partir des champs remplis par les usagers.
 
 ## ds_download_gui_windows sous windows
 
@@ -58,7 +61,7 @@ Objectif : télécharger des pièces jointes sur demarches-simplifiees.fr via l'
 
 Avant tout, il est nécessaire d'installer Python 3 et de vérifier que les modules python : requests, os, errno et urllib (ainsi que tkinter pour ds_download_gui.py) sont installés. Dans le cas contraire, vous pouvez les installer en utilisant ce type de commande (en remplaçant NOM_MODULE par requests pour installer requests) :
 
-python -m pip install NOM_MODULE
+python3 -m pip install NOM_MODULE
 
 Mode d'emploi et configuration du fichier ds-download.py (ouvrez le fichier ds-download.py avec un éditer de texte tel que Notepad)
 
